@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="1f081b3e37eea2ba52dbe5ab1a5b885889ef646f">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_52aff5e60cfab02d28ef27f7880c715db27f95f2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.3.0_c3c3e1fa6c8d396d75d6b975872d43958dd22b45/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.3.0_45d408cac731485bf01f3c1d44a2c0455bd36809/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/libs/internal_impl-23.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.3.0_b09c757236251b528f16578351917ecfd7d4ee89/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.3.0_2ea26182299f6c4917dfbf7786f62ed4e215bffa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.3.0/support-annotations-23.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.3.0_4112671b6be0f62a31e8b684232ed3fad3e7d3cf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5759f4f657819714c591fe1d4c2499c3004854e3">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_9b74df6ad4399266630ef8515d91914c6a8b416e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-quake-report/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.3.0_362996568412a589a96f7d8e02227b63096d9c31/classes.dex" />
+    </item>
+
+</items>
