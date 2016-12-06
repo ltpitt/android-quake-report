@@ -10,13 +10,13 @@ package com.example.android.quakereport;
 public class Earthquake {
 
     // Earthquake's magnitude (e.g. 7.2, 6.1)
-    private String mQuakeMagnitude;
+    private String mMagnitude;
 
     // Name of the city hit by the quake (e.g. Tokyo, London, Los Angeles)
-    private String mCityName;
+    private String mLocation;
 
     // Date in which the quake happened
-    private String mQuakeDate;
+    private String mDate;
 
     /*
     * Create a new Earthquake.
@@ -25,25 +25,25 @@ public class Earthquake {
     * @param vCity is the name of the city hit by the quake (Tokyo, London, Los Angeles)
     * @param vDate is the date in which the quake happened
     * */
-    public Earthquake(String vMagnitude, String vCity, String vDate)
+    public Earthquake(String magnitude, String location, String date)
     {
-        mQuakeMagnitude = vMagnitude;
-        mCityName = vCity;
-        mQuakeDate = vDate;
+        mMagnitude = magnitude;
+        mLocation = location;
+        mDate = date;
     }
 
     // Get the magnitude
     public String getQuakeMagnitude() {
-        return mQuakeMagnitude;
+        return mMagnitude;
     }
 
     // Get the city name
     public String getCityName() {
-        return mCityName;
+        return mLocation;
     }
 
     // Get the quake date
     public String getQuakeDate() {
-        return mQuakeDate;
+        return mDate;
     }
 }
