@@ -15,35 +15,38 @@ public class Earthquake {
     // Name of the city hit by the quake (e.g. Tokyo, London, Los Angeles)
     private String mLocation;
 
-    // Date in which the quake happened
-    private String mDate;
+    // Time of the earthquake in milliseconds
+    private long mTimeInMilliseconds;
 
-    /*
-    * Create a new Earthquake.
-    *
-    * @param vMagnitude is the quake's magnitude (e.g. 7.2, 6.1)
-    * @param vCity is the name of the city hit by the quake (Tokyo, London, Los Angeles)
-    * @param vDate is the date in which the quake happened
-    * */
-    public Earthquake(String magnitude, String location, String date)
+    /**
+     * Constructs a new {@link Earthquake} object.
+     *
+     * @param magnitude is the magnitude (size) of the earthquake
+     * @param location is the city location of the earthquake
+     * @param timeInMilliseconds is the time in milliseconds (from the Epoch) when the
+     *  earthquake happened
+     */
+    public Earthquake(String magnitude, String location, long timeInMilliseconds)
     {
         mMagnitude = magnitude;
         mLocation = location;
-        mDate = date;
+        mTimeInMilliseconds = timeInMilliseconds;
     }
 
-    // Get the magnitude
-    public String getQuakeMagnitude() {
+    // Returns the magnitude
+    public String getMagnitude() {
         return mMagnitude;
     }
 
-    // Get the city name
-    public String getCityName() {
+    // Returns the city name
+    public String getLocation() {
         return mLocation;
     }
 
-    // Get the quake date
-    public String getQuakeDate() {
-        return mDate;
+    /**
+     * Returns the time of the earthquake.
+     */
+    public long getTimeInMilliseconds() {
+        return mTimeInMilliseconds;
     }
 }
