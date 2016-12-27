@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,6 +21,15 @@ import java.util.ArrayList;
 * based on a data source, which is a list of {@link Earthquake} objects.
 * */
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
+
+    /**
+     * Return the formatted magnitude string showing 1 decimal place (i.e. "3.2")
+     * from a decimal magnitude value.
+     */
+    private String formatMagnitude(double magnitude) {
+        DecimalFormat magnitudeFormat = new DecimalFormat("0.0");
+        return magnitudeFormat.format(magnitude);
+    }
 
     /**
      * Return the formatted date string (i.e. "Mar 3, 1984") from a Date object.
@@ -37,6 +48,8 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
     }
 
     private static final String LOG_TAG=EarthquakeAdapter.class.getSimpleName();
+
+    private static final String LOCATION_SEPARATOR = " of ";
 
     /**
      * This is a custom constructor (it doesn't mirror a superclass constructor).
@@ -78,13 +91,35 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
         // Find the TextView with view ID magnitude
         TextView magnitudeView = (TextView) listItemView.findViewById(R.id.magnitude);
+        // Format the magnitude to show 1 decimal place
+        String formattedMagnitude = formatMagnitude(currentEarthquake.getMagnitude());
         // Display the magnitude of the current earthquake in that TextView
-        magnitudeView.setText(currentEarthquake.getMagnitude());
+        magnitudeView.setText(formattedMagnitude);
 
-        // Find the TextView with view ID location
-        TextView locationView = (TextView) listItemView.findViewById(R.id.location);
+        // Get the original location
+        String originalLocation = currentEarthquake.getLocation();
+
+        String primaryLocation;
+        String locationOffset;
+
+        if (originalLocation.contains(LOCATION_SEPARATOR)) {
+            String[] parts = originalLocation.split(LOCATION_SEPARATOR);
+            locationOffset = parts[0] + LOCATION_SEPARATOR;
+            primaryLocation = parts[1];
+        } else {
+            locationOffset = getContext().getString(R.string.near_the);
+            primaryLocation = originalLocation;
+        }
+
+        // Find the TextView with view ID primary_location
+        TextView primaryLocationView = (TextView) listItemView.findViewById(R.id.primary_location);
         // Display the location of the current earthquake in that TextView
-        locationView.setText(currentEarthquake.getLocation());
+        primaryLocationView.setText(primaryLocation);
+
+        // Find the TextView with view ID location_offset
+        TextView locationOffsetView = (TextView) listItemView.findViewById(R.id.location_offset);
+        // Display the location offset of the current earthquake in that TextView
+        locationOffsetView.setText(locationOffset);
 
         // Create a new Date object from the time in milliseconds of the earthquake
         Date dateObject = new Date(currentEarthquake.getTimeInMilliseconds());
