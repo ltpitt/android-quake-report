@@ -15,8 +15,12 @@
  */
 package com.example.android.quakereport;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -30,22 +34,38 @@ public class EarthquakeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
-        // Create an ArrayList of Earthquake objects
-        //ArrayList<Earthquake> earthquakes = new ArrayList<>();
-        //earthquakes.add(new Earthquake("7.2", "Los Angeles", "23/07/1964"));
-        //earthquakes.add(new Earthquake("5.2", "Catania", "23/07/1924"));
-
-        // Create a fake list of earthquakes.
+        // Retrieve an ArrayList of Earthquake objects
         ArrayList<Earthquake> earthquakes = QueryUtils.extractEarthquakes();
 
         // Create an {@link EarthquakeAdapter}, whose data source is a list of
         // {@link Earthquake}s. The adapter knows how to create list item views for each item
         // in the list.
-        EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(this, earthquakes);
+        final EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(this, earthquakes);
 
         // Get a reference to the ListView, and attach the adapter to the listView.
         ListView earthquakeListView = (ListView) findViewById(R.id.listview_quake);
         earthquakeListView.setAdapter(earthquakeAdapter);
+
+
+        earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // Find the current earthquake that was clicked on
+                Earthquake currentEarthquake = earthquakeAdapter.getItem(position);
+
+                // Convert the String URL into a URI object (to pass into the Intent constructor)
+                Uri earthquakeUri = Uri.parse(currentEarthquake.getUrl());
+
+                // Create a new intent to view the earthquake URI
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
+
+                // Send the intent to launch a new activity
+                startActivity(websiteIntent);
+            }
+        });
+
+
+
 
     }
 
