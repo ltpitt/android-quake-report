@@ -24,7 +24,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -38,9 +40,12 @@ public class EarthquakeActivity extends AppCompatActivity
 
     private static final String LOG_TAG = EarthquakeActivity.class.getName();
 
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
     /** URL for earthquake data from the USGS dataset */
     private static final String USGS_REQUEST_URL =
-            "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=6&limit=10";
+            //"http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=6&limit=10";
+            "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=3&limit=10&latitude=41.9028&longitude=12.4964&maxradiuskm=1000";
 
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
@@ -54,9 +59,8 @@ public class EarthquakeActivity extends AppCompatActivity
     /** TextView that is displayed when the list is empty */
     private TextView mEmptyStateTextView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private void loadActivity() {
+
         setContentView(R.layout.earthquake_activity);
 
         // Find a reference to the {@link ListView} in the layout
@@ -66,7 +70,7 @@ public class EarthquakeActivity extends AppCompatActivity
         earthquakeListView.setEmptyView(mEmptyStateTextView);
 
         // Create a new adapter that takes an empty list of earthquakes as input
-        mAdapter = new EarthquakeAdapter(this, new ArrayList<Earthquake>());
+        mAdapter = new EarthquakeAdapter(this, new ArrayList < Earthquake > ());
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
@@ -76,7 +80,7 @@ public class EarthquakeActivity extends AppCompatActivity
         // to open a website with more information about the selected earthquake.
         earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            public void onItemClick(AdapterView < ? > adapterView, View view, int position, long l) {
                 // Find the current earthquake that was clicked on
                 Earthquake currentEarthquake = mAdapter.getItem(position);
 
@@ -116,6 +120,37 @@ public class EarthquakeActivity extends AppCompatActivity
             // Update empty state with no connection error message
             mEmptyStateTextView.setText(R.string.no_internet_connection);
         }
+
+        /*
+         * Sets up a SwipeRefreshLayout.OnRefreshListener that is invoked when the user
+         * performs a swipe-to-refresh gesture.
+         */
+
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
+
+        /*
+         * Sets up a SwipeRefreshLayout.OnRefreshListener that is invoked when the user
+         * performs a swipe-to-refresh gesture.
+         */
+        mSwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        Log.i(LOG_TAG, "onRefresh called from SwipeRefreshLayout");
+
+                        // This method performs the actual data-refresh operation.
+                        // The method calls setRefreshing(false) when it's finished.
+                        loadActivity();
+                    }
+                }
+        );
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        loadActivity();
     }
 
     @Override
@@ -148,4 +183,7 @@ public class EarthquakeActivity extends AppCompatActivity
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
     }
+
+
+
 }
