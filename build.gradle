@@ -21,7 +21,6 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
     }
 
     /**
@@ -47,6 +46,5 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
     }
 }
